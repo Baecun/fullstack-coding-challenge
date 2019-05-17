@@ -1,0 +1,1 @@
+web: gunicorn --chdir UnbabelChallenge __init__:app
