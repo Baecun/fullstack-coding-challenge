@@ -36,4 +36,69 @@ You can find more info about the api at [https://developers.unbabel.com](https:/
 
 #### Resources
 * Unbabel's API: http://developers.unbabel.com/
+------------------
+## Implementation:
 
+### Features:
+- Basic translation functionality as requested
+- Inpect any translation individually
+- Authentication module along with registration
+
+
+### Views:
+- Login
+- Registration
+- Translate
+- Translation
+
+### Services:
+- authentication_service
+- translation_service
+- database_connection
+
+
+### Database:
+PostgreSQL instance hosted on ElephantSQL.com
+
+#### Model:
+- User
+    - id (PK)
+    - username
+    - email
+    - password_hash
+    - translations (FK)
+- Translation
+    - id (PK)
+    - source_language_id (FK)
+    - targert_language_id (FK)
+    - callback_url
+    - text
+    - request_date
+    - status
+    - translated_text
+    - user_id
+- Language
+    - id
+    - short_name
+    - full_name
+
+
+##### Things that would have been interesting to implement:
+‘Guest Mode’ with temporary translation requests
+Implementing the Database seed method using a file containing the languages
+Customized error page
+Customized 404 code page
+
+
+## Running the application:
+Since the database is hosted online, there’s no need to set it up manually. All you need to run the app is to execute the command: `python runserver.py` from the project’s main directory.
+
+### Unit tests:
+Test coverage is fairly small, but since most methods inside the services are CRUD related, they end up being very similar to each other.
+To run unit test, run the following command inside the project directory:
+`python -m unittest`
+
+## Test Login information:
+For convinience's sake, I created a default user, so that registration isn't absolutely necessary in order to access the application.
+###### email: unbabel-fullstack-challenge@unbabel.com
+###### password: Unbabel-Fu11st4ck-Dev
